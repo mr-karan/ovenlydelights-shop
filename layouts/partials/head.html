@@ -1,0 +1,63 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{ .Title }}</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="{{ .Site.Params.description }}" />
+<meta
+  name="keywords"
+  content="homemade chocolates, artisanal chocolates, handcrafted chocolates, Indian chocolates, Ovenly Delights, Saumya chocolates"
+/>
+<meta name="author" content="Saumya" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:title" content="{{ .Title }}" />
+<meta property="og:description" content="{{ .Site.Params.description }}" />
+<!-- <meta property="og:image" content="{{ .Site.BaseURL }}assets/og-image.jpg"> -->
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="{{ .Permalink }}" />
+<meta property="twitter:title" content="{{ .Title }}" />
+<meta property="twitter:description" content="{{ .Site.Params.description }}" />
+<!-- <meta property="twitter:image" content="{{ .Site.BaseURL }}assets/twitter-image.jpg"> -->
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/assets/chef-hat.svg" />
+<link rel="apple-touch-icon" href="/assets/chef-hat.svg" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ .Permalink }}" />
+
+<script src="//unpkg.com/alpinejs" defer></script>
+<link
+  href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          chocolate: {
+            light: "#D2691E",
+            DEFAULT: "#8B4513",
+            dark: "#5D3A1A",
+          },
+          cream: {
+            light: "#FFF8E7",
+            DEFAULT: "#FAEBD7",
+            dark: "#F5DEB3",
+          },
+        },
+      },
+    },
+  };
+</script>
+{{ $style := resources.Get "css/main.css" | resources.ToCSS | resources.Minify |
+resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $style.Permalink }}" />

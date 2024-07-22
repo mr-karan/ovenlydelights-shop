@@ -1,0 +1,172 @@
+{{ define "main" }}
+<div class="container mx-auto px-4 py-8">
+  <div class="flex flex-col lg:flex-row gap-8">
+    <div class="menu-section lg:w-2/3">
+      <template
+        x-for="(category, categoryName) in items.bars"
+        :key="categoryName"
+      >
+        <div class="card bg-cream shadow-xl mb-8">
+          <div class="card-body">
+            <h2
+              class="card-title text-2xl mb-4 text-chocolate-dark"
+              x-text="categoryName"
+            ></h2>
+            <template x-for="item in category" :key="item.name">
+              <div
+                class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 border-b border-chocolate-light/30 last:border-b-0"
+              >
+                <div class="flex-grow mb-2 sm:mb-0">
+                  <span
+                    class="font-semibold text-chocolate"
+                    x-text="item.name"
+                  ></span>
+                  <p
+                    class="text-sm text-chocolate-dark/70"
+                    x-text="item.description"
+                  ></p>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span
+                    class="text-chocolate font-bold"
+                    x-text="'₹' + item.price"
+                  ></span>
+                  <div class="join">
+                    <button
+                      class="btn btn-sm join-item bg-chocolate text-cream-light hover:bg-chocolate-dark"
+                      @click="decrementQuantity(item)"
+                    >
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      x-model="item.quantity"
+                      class="join-item w-14 text-center bg-cream-light text-chocolate appearance-none"
+                      readonly
+                    />
+                    <button
+                      class="btn btn-sm join-item bg-chocolate text-cream-light hover:bg-chocolate-dark"
+                      @click="incrementQuantity(item)"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </template>
+
+      <div class="card bg-cream shadow-xl mb-8">
+        <div class="card-body">
+          <h2 class="card-title text-2xl mb-4 text-chocolate-dark">
+            Assorted Collections
+          </h2>
+          <template x-for="item in assortedCollections" :key="item.name">
+            <div
+              class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 border-b border-chocolate-light/30 last:border-b-0"
+            >
+              <div class="flex-grow mb-2 sm:mb-0">
+                <span
+                  class="font-semibold text-chocolate"
+                  x-text="item.name"
+                ></span>
+                <p
+                  class="text-sm text-chocolate-dark/70"
+                  x-text="item.description"
+                ></p>
+              </div>
+              <div class="flex items-center gap-4">
+                <select
+                  x-model="item.selectedSize"
+                  @change="updateAssortedPrice(item)"
+                  class="select select-bordered bg-cream-light text-chocolate"
+                >
+                  <option value="8">Box of 8</option>
+                  <option value="9">Box of 9</option>
+                  <option value="12">Box of 12</option>
+                  <option value="16">Box of 16</option>
+                  <option value="20">Box of 20</option>
+                </select>
+                <span
+                  class="text-chocolate font-bold"
+                  x-text="'₹' + item.price"
+                ></span>
+                <div class="join">
+                  <button
+                    class="btn btn-sm join-item bg-chocolate text-cream-light hover:bg-chocolate-dark"
+                    @click="decrementQuantity(item, item.selectedSize)"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    x-model="item.quantities[item.selectedSize]"
+                    class="join-item w-14 text-center bg-cream-light text-chocolate appearance-none"
+                    readonly
+                  />
+                  <button
+                    class="btn btn-sm join-item bg-chocolate text-cream-light hover:bg-chocolate-dark"
+                    @click="incrementQuantity(item, item.selectedSize)"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-section lg:w-1/3">
+      <div class="card bg-cream shadow-xl sticky top-4">
+        <div class="card-body">
+          <h2 class="card-title text-2xl mb-4 text-chocolate-dark">
+            Order Summary
+          </h2>
+          <div x-show="cartItems.length > 0" class="mt-8">
+            <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
+            <ul>
+              <template
+                x-for="item in cartItems"
+                :key="item.name + (item.boxSize || '')"
+              >
+                <li class="mb-2">
+                  <span x-text="item.name"></span>
+                  <template x-if="item.boxSize">
+                    <span x-text="` (Box of ${item.boxSize})`"></span>
+                  </template>
+                  <span
+                    x-text="` x ${item.quantity} = ₹${item.price * item.quantity}`"
+                  ></span>
+                </li>
+              </template>
+            </ul>
+            <p class="font-bold mt-4">
+              Total: ₹<span x-text="cartTotal"></span>
+            </p>
+          </div>
+          <form id="orderForm" class="mt-4">
+            <input
+              type="text"
+              x-model="customerName"
+              placeholder="Your Name"
+              required
+              class="input input-bordered w-full mb-2 bg-cream-light text-chocolate placeholder-chocolate-light/70"
+            />
+            <button
+              type="button"
+              class="btn w-full bg-chocolate text-cream-light hover:bg-chocolate-dark"
+              @click="sendWhatsAppOrder"
+            >
+              Place Order via WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

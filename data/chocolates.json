@@ -146,27 +146,57 @@
         {
             "name": "Chocolate Connoisseur's Box",
             "description": "A curated selection of our finest dark, milk, and white chocolate bars",
-            "price": 1000
+            "prices": {
+                "8": 600,
+                "9": 700,
+                "12": 900,
+                "16": 1200,
+                "20": 1500
+            }
         },
         {
             "name": "Nutty Delight Collection",
             "description": "An assortment of our most popular nut-filled chocolate bars",
-            "price": 900
+            "prices": {
+                "8": 600,
+                "9": 700,
+                "12": 900,
+                "16": 1200,
+                "20": 1500
+            }
         },
         {
             "name": "Fruit Lover's Paradise",
             "description": "A mix of our fruitiest chocolate bars across all varieties",
-            "price": 950
+            "prices": {
+                "8": 600,
+                "9": 700,
+                "12": 900,
+                "16": 1200,
+                "20": 1500
+            }
         },
         {
             "name": "White Chocolate Wonder",
             "description": "An exclusive collection of our innovative white chocolate flavors",
-            "price": 1100
+            "prices": {
+                "8": 600,
+                "9": 700,
+                "12": 900,
+                "16": 1200,
+                "20": 1500
+            }
         },
         {
             "name": "Indian Flavors Fusion",
             "description": "A unique set featuring our Indian-inspired chocolate creations",
-            "price": 1200
+            "prices": {
+                "8": 600,
+                "9": 700,
+                "12": 900,
+                "16": 1200,
+                "20": 1500
+            }
         }
     ]
 }

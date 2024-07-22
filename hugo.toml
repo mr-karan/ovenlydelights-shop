@@ -1,0 +1,8 @@
+baseURL = 'https://chocolates.ovenlydelights.shop/'
+languageCode = 'en-us'
+title = "Ovenly Delights by Saumya - Handcrafted Homemade Chocolates"
+
+[params]
+  description = "Indulge in exquisite handcrafted chocolates from Ovenly Delights by Saumya. Discover our range of artisanal dark, milk, and white chocolates made with love in India."
+
+disableKinds = ["taxonomy", "term"]
