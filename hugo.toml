@@ -4,5 +4,7 @@ title = "Ovenly Delights by Saumya - Handcrafted Homemade Chocolates"
 
 [params]
   description = "Indulge in exquisite handcrafted chocolates from Ovenly Delights by Saumya. Discover our range of artisanal dark, milk, and white chocolates made with love in India."
+  author = "Saumya"
+  keywords = ["handcrafted chocolates", "homemade chocolates", "artisanal chocolates", "dark chocolate", "milk chocolate", "white chocolate"]
 
 disableKinds = ["taxonomy", "term"]

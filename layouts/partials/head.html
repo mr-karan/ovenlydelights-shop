@@ -9,6 +9,7 @@
   content="homemade chocolates, artisanal chocolates, handcrafted chocolates, Indian chocolates, Ovenly Delights, Saumya chocolates"
 />
 <meta name="author" content="Saumya" />
+<meta name="language" content="English" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -61,3 +62,22 @@
 {{ $style := resources.Get "css/main.css" | resources.ToCSS | resources.Minify |
 resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $style.Permalink }}" />
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Ovenly Delights by Saumya",
+    "description": "{{ .Site.Params.description }}",
+    "image": "{{ .Site.BaseURL }}assets/chef-hat.svg",
+    "url": "{{ .Site.BaseURL }}",
+    "telephone": "+918700022184",
+    "address": {
+      "@type": "Niti Khand 2",
+      "addressLocality": "Indirapuram",
+      "addressRegion": "Uttar Pradesh",
+      "addressCountry": "India"
+    },
+    "priceRange": "₹₹"
+  }
+</script>
