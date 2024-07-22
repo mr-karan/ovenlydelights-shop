@@ -120,18 +120,18 @@
             Object.values(this.items.bars).forEach(category => {
               category.forEach(item => item.quantity = 0);
             });
-            this.assortedCollections = this.items.assortedCollections;
-            this.assortedCollections.forEach(item => {
-              item.quantities = {
+            this.assortedCollections = this.items.assortedCollections.map(item => ({
+              ...item,
+              quantities: {
                 "8": 0,
                 "9": 0,
                 "12": 0,
                 "16": 0,
                 "20": 0
-              };
-              item.selectedSize = "8";
-              item.price = item.prices["8"];
-            });
+              },
+              selectedSize: "8",
+              price: item.prices["8"]
+            }));
           },
           incrementQuantity(item, size) {
             if (size) {
@@ -140,6 +140,7 @@
             } else {
               item.quantity++;
             }
+            this.$nextTick(() => this.updateComponent());
           },
           decrementQuantity(item, size) {
             if (size) {
@@ -150,9 +151,17 @@
             } else {
               if (item.quantity > 0) item.quantity--;
             }
+            this.$nextTick(() => this.updateComponent());
           },
           updateAssortedPrice(item) {
             item.price = item.prices[item.selectedSize];
+            this.$nextTick(() => {
+              
+              this.assortedCollections = [...this.assortedCollections];
+            });
+          },
+          updateComponent() {
+            this.assortedCollections = [...this.assortedCollections];
           },
           get cartItems() {
             let barItems = Object.values(this.items.bars).flat().filter(item => item.quantity > 0);
@@ -160,7 +169,7 @@
               Object.entries(item.quantities)
                 .filter(([size, quantity]) => quantity > 0)
                 .map(([size, quantity]) => ({
-                  ...item,
+                  name: item.name,
                   boxSize: size,
                   quantity: quantity,
                   price: item.prices[size]

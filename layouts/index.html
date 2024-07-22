@@ -128,23 +128,38 @@
           </h2>
           <div x-show="cartItems.length > 0" class="mt-8">
             <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
-            <ul>
+            <ul class="space-y-2">
               <template
                 x-for="item in cartItems"
                 :key="item.name + (item.boxSize || '')"
               >
-                <li class="mb-2">
-                  <span x-text="item.name"></span>
-                  <template x-if="item.boxSize">
-                    <span x-text="` (Box of ${item.boxSize})`"></span>
-                  </template>
-                  <span
-                    x-text="` x ${item.quantity} = ₹${item.price * item.quantity}`"
-                  ></span>
+                <li class="flex justify-between items-center">
+                  <span class="flex-grow">
+                    <span x-text="item.name"></span>
+                    <template x-if="item.boxSize">
+                      <span
+                        class="text-sm text-chocolate-dark/70"
+                        x-text="` (Box of ${item.boxSize})`"
+                      ></span>
+                    </template>
+                  </span>
+                  <span class="flex-shrink-0 text-right">
+                    <span
+                      class="text-sm text-chocolate-dark/70"
+                      x-text="` x${item.quantity}`"
+                    ></span>
+                    <span
+                      class="ml-2"
+                      x-text="`₹${item.price * item.quantity}`"
+                    ></span>
+                  </span>
                 </li>
               </template>
             </ul>
-            <p class="font-bold mt-4">
+            <div
+              class="border-t border-dotted border-chocolate-dark/30 my-4"
+            ></div>
+            <p class="font-bold text-right">
               Total: ₹<span x-text="cartTotal"></span>
             </p>
           </div>
