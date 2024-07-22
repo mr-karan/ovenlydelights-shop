@@ -140,8 +140,21 @@
         <div class="container mx-auto text-center">
             <p>All our chocolates are made with the finest ingredients and crafted with care.</p>
             <p class="mt-2">Please inquire about our seasonal specials and custom orders.</p>
+            <p class="mt-4"><a href="privacy-policy.html" class="underline">Privacy Policy</a></p>
         </div>
     </footer>
+
+    <dialog id="errorModal" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg text-chocolate-dark">Oops!</h3>
+            <p id="modalMessage" class="py-4 text-chocolate"></p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn bg-chocolate text-cream-light hover:bg-chocolate-dark">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
 
     <script>
         function menu() {
@@ -150,7 +163,7 @@
                 assortedCollections: [],
                 customerName: '',
                 fetchMenuData() {
-                    fetch('chocolates.json')
+                    fetch('assets/chocolates.json')
                         .then(response => response.json())
                         .then(data => {
                             this.items = data;
@@ -179,13 +192,18 @@
                     return this.cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
                 },
                 sendWhatsAppOrder() {
+                    const showModal = (message) => {
+                        document.getElementById('modalMessage').textContent = message;
+                        errorModal.showModal();
+                    };
+
                     if (!this.customerName) {
-                        alert('Please enter your name.');
+                        showModal('Please enter your name.');
                         return;
                     }
 
                     if (this.cartItems.length === 0) {
-                        alert('Your cart is empty. Please add some items before placing an order.');
+                        showModal('Your cart is empty. Please add some items before placing an order.');
                         return;
                     }
 
