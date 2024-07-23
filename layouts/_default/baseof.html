@@ -44,14 +44,13 @@
             this.assortedCollections = this.items.assortedCollections.map(item => ({
               ...item,
               quantities: {
-                "8": 0,
                 "9": 0,
                 "12": 0,
                 "16": 0,
                 "20": 0
               },
-              selectedSize: "8",
-              price: item.prices["8"]
+              selectedSize: "9",
+              price: item.prices["9"]
             }));
           },
           incrementQuantity(item, size) {
@@ -85,7 +84,9 @@
             this.assortedCollections = [...this.assortedCollections];
           },
           get cartItems() {
-            let barItems = Object.values(this.items.bars).flat().filter(item => item.quantity > 0);
+            let barItems = Object.values(this.items.bars).flatMap(category =>
+              category.items.filter(item => item.quantity > 0)
+            );
             let assortedItems = this.assortedCollections.flatMap(item =>
               Object.entries(item.quantities)
                 .filter(([size, quantity]) => quantity > 0)
