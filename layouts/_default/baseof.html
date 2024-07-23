@@ -121,7 +121,7 @@
               return;
             }
 
-            let message = `Hello! This is ${this.customerName}. I'd like to place an order from chocolates.ovenlydelights.com:\n\n`;
+            let message = `Hello! This is ${this.customerName}. I'd like to place an order from chocolates.ovenlydelights.shop:\n\n`;
             this.cartItems.forEach(item => {
               if (item.boxSize) {
                 message += `${item.name} (Box of ${item.boxSize}) x ${item.quantity} = ₹${item.price * item.quantity}\n`;
