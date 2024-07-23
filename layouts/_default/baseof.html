@@ -35,8 +35,11 @@
           customerName: "",
           fetchMenuData() {
             this.items = {{ .Site.Data.chocolates | jsonify | safeJS }};
+            this.categoryOrder = Object.entries(this.items.bars)
+                .sort((a, b) => a[1].priority - b[1].priority)
+                .map(([category, _]) => category);
             Object.values(this.items.bars).forEach(category => {
-              category.forEach(item => item.quantity = 0);
+                category.items.forEach(item => item.quantity = 0);
             });
             this.assortedCollections = this.items.assortedCollections.map(item => ({
               ...item,

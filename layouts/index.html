@@ -2,10 +2,7 @@
 <div class="container mx-auto px-4 py-12 bg-cream-light">
   <div class="flex flex-col lg:flex-row gap-12">
     <div class="menu-section lg:w-3/5">
-      <template
-        x-for="(category, categoryName) in items.bars"
-        :key="categoryName"
-      >
+      <template x-for="categoryName in categoryOrder" :key="categoryName">
         <div
           class="card bg-cream shadow-xl mb-8 hover:shadow-2xl transition-shadow duration-300"
         >
@@ -14,7 +11,10 @@
               class="card-title text-2xl mb-4 text-chocolate-dark"
               x-text="categoryName"
             ></h2>
-            <template x-for="item in category" :key="item.name">
+            <template
+              x-for="item in items.bars[categoryName].items"
+              :key="item.name"
+            >
               <div
                 class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-6 border-b border-chocolate-light/30 last:border-b-0 hover:bg-cream-dark/20 transition-colors duration-300"
               >
