@@ -166,10 +166,10 @@
             "name": "Chocolate Connoisseur's Box",
             "description": "A delightful assortment of dark, milk, and white chocolates, offering a perfect mix of flavors and textures ",
             "prices": {
-                "9": 300.0,
-                "12": 380.0,
-                "16": 480.0,
-                "20": 560.0
+                "9": 350.0,
+                "12": 420.0,
+                "16": 550.0,
+                "20": 630.0
             }
         },
         {
