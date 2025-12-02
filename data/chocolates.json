@@ -1,236 +1,65 @@
 {
     "bars": {
-        "Milk Chocolate Bars": {
+        "Classic Plum Cakes": {
             "priority": 1,
             "items": [
                 {
-                    "name": "Creamy Dream",
-                    "description": "Our classic plain creamy chocolate bar, silky smooth and satisfying",
-                    "price": 150.0
+                    "name": "Traditional Plum Cake",
+                    "description": "Our signature Christmas plum cake with rum-soaked dried fruits, rich spices, and a moist crumb",
+                    "price": 450.0
                 },
                 {
-                    "name": "Hazelnut Haven",
-                    "description": "Velvety chocolate with generous chunks of hazelnuts and walnuts",
-                    "price": 300.0
+                    "name": "Eggless Plum Cake",
+                    "description": "All the festive flavors without eggs - perfect for vegetarian celebrations",
+                    "price": 400.0
                 },
                 {
-                    "name": "Nutty Nirvana",
-                    "description": "Silky treat packed with a delightful mix of cashews, almonds, pistachios, and raisins",
-                    "price": 320.0
-                },
-                {
-                    "name": "Berry Bliss",
-                    "description": "Classic chocolate with a medley of sublimated berries",
-                    "price": 280.0
-                },
-                {
-                    "name": "Butterscotch Bonanza",
-                    "description": "Smooth chocolate with butterscotch chips and crunchy nuts",
-                    "price": 300.0
-                },
-                {
-                    "name": "Caramel Kiss",
-                    "description": "Rich chocolate embracing a soft caramel center",
-                    "price": 250.0
-                },
-                {
-                    "name": "Rum Raisin Revelry",
-                    "description": "Milk chocolate infused with rum and plump raisins",
-                    "price": 350.0
+                    "name": "Rich Fruit & Nut Plum Cake",
+                    "description": "Extra loaded with candied fruits, raisins, and premium nuts for the ultimate indulgence",
+                    "price": 550.0
                 }
             ]
         },
-        "Dark Chocolate Bars": {
+        "Premium Plum Cakes": {
             "priority": 2,
             "items": [
                 {
-                    "name": "Midnight Velvet",
-                    "description": "Our classic plain dark chocolate bar, smooth and intense",
-                    "price": 150.0
+                    "name": "Brandy Soaked Deluxe",
+                    "description": "Luxurious plum cake aged with fine brandy, studded with cherries and almonds",
+                    "price": 650.0
                 },
                 {
-                    "name": "Nutty Symphony",
-                    "description": "Indulgent chocolate filled with a delightful assortment of mixed nuts",
-                    "price": 320.0
+                    "name": "Dark Chocolate Plum Cake",
+                    "description": "Rich dark chocolate meets traditional plum cake - a decadent twist on the classic",
+                    "price": 600.0
                 },
                 {
-                    "name": "Almond Overload",
-                    "description": "Decadent treat loaded with crunchy, roasted almonds.",
-                    "price": 280.0
-                },
-                {
-                    "name": "Caramel Cascade",
-                    "description": "Gourmet treat with a smooth caramel filling",
-                    "price": 250.0
-                },
-                {
-                    "name": "Rum Raisin Rhapsody",
-                    "description": "Luxurious chocolate blended with rum and filled with juicy raisins",
-                    "price": 350.0
-                },
-                {
-                    "name": "Hazelnut Delight",
-                    "description": "Smooth delight with generous chunks of hazelnuts and walnuts",
-                    "price": 300.0
+                    "name": "Almond Marzipan Topped",
+                    "description": "Classic plum cake crowned with a layer of homemade almond marzipan",
+                    "price": 700.0
                 }
             ]
         },
-        "White Chocolate Bars": {
+        "Mini & Gift Packs": {
             "priority": 3,
             "items": [
                 {
-                    "name": "Ivory Indulgence",
-                    "description": "Our classic plain white chocolate bar, creamy and dreamy",
-                    "price": 170.0
-                },
-                {
-                    "name": "Rasmalai Reverie",
-                    "description": "Smooth chocolate infused with the flavors of the classic Indian dessert,complemented by a mix of crunchy nuts",
+                    "name": "Mini Plum Cake (Pack of 4)",
+                    "description": "Adorable individual-sized plum cakes, perfect for gifting or personal treats",
                     "price": 350.0
                 },
                 {
-                    "name": "Strawberry Sensation",
-                    "description": "Infused with the sweet, tangy essence of strawberries, featuring a delightful filling of dried berries",
-                    "price": 300.0
+                    "name": "Plum Cake Slices Box (6 pcs)",
+                    "description": "Pre-sliced portions in an elegant gift box - great for sharing",
+                    "price": 400.0
                 },
                 {
-                    "name": "Pistachio Paradise",
-                    "description": "Studded with crunchy pistachios",
-                    "price": 320.0
-                },
-                {
-                    "name": "Paan Pleasure",
-                    "description": "Our Signature Chocolate bar infused with the vibrant taste of paan, combined with delightful fillings",
-                    "price": 320.0
-                },
-                {
-                    "name": "Blueberry Bliss",
-                    "description": "Smooth chocolate infused with the vibrant flavor of blueberries, complemented by the delightful texture of dried blueberries",
-                    "price": 320.0
-                },
-                {
-                    "name": "Cranberry Delight ",
-                    "description": "Rich, cranberry-infused chocolate, filled with sweet and tart dried cranberries",
-                    "price": 320.0
-                },
-                {
-                    "name": "Orange Zest",
-                    "description": "Chocolate bar infused with refreshing orange flavor and filled with tangy dried oranges",
-                    "price": 320.0
-                },
-                {
-                    "name": "Pineapple Paradise",
-                    "description": "Savor the taste of sunny pineapple chunks nestled in smooth white chocolate",
-                    "price": 320.0
-                },
-                {
-                    "name": "Butterscotch Bliss",
-                    "description": "Creamy chocolate swirled with rich and crunchy nuts for a decadent treat",
-                    "price": 350.0
-                },
-                {
-                    "name": "Coffee Crunch Delight",
-                    "description": "Enjoy the aromatic essence of brewed coffee blended with creamy chocolate, enhanced by the satisfying crunch of almonds, cashews, and walnuts",
-                    "price": 350.0
-                },
-                {
-                    "name": "Rose Romance",
-                    "description": "Smooth chocolate infused with crunchy nuts and delicate rose petals",
-                    "price": 350.0
-                },
-                {
-                    "name": "Tutti Frutti Fiesta",
-                    "description": "Vibrant chocolate brimming with colorful tutti frutti for a burst of fruity flavor and fun",
-                    "price": 300.0
-                }
-            ]
-        },
-        "Biscuit Delight Box Set": {
-            "priority": 4,
-            "items": [
-                {
-                    "name": "Oreo Crunch Bliss (12 pieces)",
-                    "description": "Indulge in the perfect combination of creamy chocolate and the classic crunch of Oreo biscuits",
-                    "price": 500.0
-                },
-                {
-                    "name": "Golden Biscuit Crunch (12 pieces)",
-                    "description": "Experience the satisfying crunch of biscuits enveloped in rich and smooth chocolate",
-                    "price": 500.0
+                    "name": "Christmas Gift Hamper",
+                    "description": "A traditional plum cake paired with festive cookies and a handwritten greeting card",
+                    "price": 850.0
                 }
             ]
         }
     },
-    "assortedCollections": [
-        {
-            "name": "Chocolate Connoisseur's Box",
-            "description": "A delightful assortment of dark, milk, and white chocolates, offering a perfect mix of flavors and textures ",
-            "prices": {
-                "9": 300.0,
-                "12": 380.0,
-                "16": 480.0,
-                "20": 560.0
-            }
-        },
-        {
-            "name": "Nutty Delight Collection",
-            "description": "A delectable collection of dark, milk, and white chocolates, each filled with a variety of crunchy nuts for a rich and satisfying treat",
-            "prices": {
-                "9": 380.0,
-                "12": 460.0,
-                "16": 560.0,
-                "20": 650.0
-            }
-        },
-        {
-            "name": "Fruit Lover's Paradise",
-            "description": "An exquisite selection of dark, milk, and white chocolates, each enriched with a mix of fruits to deliver a harmonious touch of mixed fruit flavor in every piece",
-            "prices": {
-                "9": 420.0,
-                "12": 480.0,
-                "16": 580.0,
-                "20": 660.0
-            }
-        },
-        {
-            "name": "Dark Chocolate Fusion Box",
-            "description": "A refined assortment of dark chocolates, with a variety of indulgent fillings, perfect for the true dark chocolate aficionado",
-            "prices": {
-                "9": 350.0,
-                "12": 420.0,
-                "16": 520.0,
-                "20": 600.0
-            }
-        },
-        {
-            "name": "Milk Chocolate Delights Collection",
-            "description": "A delightful mix of milk chocolates filled with rich and flavorful fillings,offering a harmonious taste experience in each piece",
-            "prices": {
-                "9": 350.0,
-                "12": 420.0,
-                "16": 520.0,
-                "20": 600.0
-            }
-        },
-        {
-            "name": "White Chocolate Wonder",
-            "description": "An assortment of white chocolates, each filled with unique and flavorful fillings, offering a variety of indulgent tastes in every bite",
-            "prices": {
-                "9": 380.0,
-                "12": 450.0,
-                "16": 550.0,
-                "20": 630.0
-            }
-        },
-        {
-            "name": "Royal Date Delight",
-            "description": "Discover the richness of dates filled with a rich blend of dry fruits and chocolate",
-            "prices": {
-                "9": 400.0,
-                "12": 520.0,
-                "16": 640.0,
-                "20": 760.0
-            }
-        }
-    ]
+    "assortedCollections": []
 }

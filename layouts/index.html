@@ -1,48 +1,58 @@
 {{ define "main" }}
-<div class="container mx-auto px-4 py-12 bg-cream-light">
+<div class="container mx-auto px-4 py-12 bg-christmas-cream-light">
   <div class="flex flex-col lg:flex-row gap-12">
+    <!-- Menu Section -->
     <div class="menu-section lg:w-3/5">
       <template x-for="categoryName in categoryOrder" :key="categoryName">
         <div
-          class="card bg-cream shadow-xl mb-8 hover:shadow-2xl transition-shadow duration-300"
+          class="card mb-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
         >
           <div class="card-body p-8">
-            <h2
-              class="card-title text-2xl mb-4 text-chocolate-dark"
-              x-text="categoryName"
-            ></h2>
+            <!-- Category header with festive styling -->
+            <div class="flex items-center gap-3 mb-6">
+              <span class="text-christmas-burgundy text-2xl">&#127876;</span>
+              <h2
+                class="card-title text-2xl text-christmas-burgundy-dark font-serif"
+                x-text="categoryName"
+              ></h2>
+              <div class="flex-grow h-px bg-gradient-to-r from-christmas-gold/50 to-transparent"></div>
+            </div>
+
             <template
               x-for="item in items.bars[categoryName].items"
               :key="item.name"
             >
               <div
-                class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-6 border-b border-chocolate-light/30 last:border-b-0 hover:bg-cream-dark/20 transition-colors duration-300"
+                class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-6 border-b border-christmas-gold/20 last:border-b-0 hover:bg-christmas-cream/50 transition-colors duration-300 rounded-lg px-3 -mx-3 garland-item"
               >
-                <div class="flex-grow mb-2 sm:mb-0">
+                <div class="flex-grow mb-3 sm:mb-0">
                   <span
-                    class="font-semibold text-chocolate"
+                    class="font-semibold text-christmas-green-dark text-lg font-serif"
                     x-text="item.name"
                   ></span>
                   <p
-                    class="text-sm text-chocolate-dark/70"
+                    class="text-sm text-christmas-burgundy/70 mt-1 italic"
                     x-text="item.description"
                   ></p>
                 </div>
                 <div class="flex items-center gap-4">
+                  <!-- Price tag -->
                   <span
-                    class="text-chocolate font-bold"
-                    x-text="'₹' + item.price"
+                    class="price-tag text-sm"
+                    x-text="'&#8377;' + item.price"
                   ></span>
-                  <div class="join">
+
+                  <!-- Quantity controls -->
+                  <div class="join shadow-md rounded-full overflow-hidden">
                     <button
-                      class="btn btn-sm join-item bg-chocolate text-cream-light hover:bg-chocolate-dark transition-colors duration-300 rounded-l-full"
+                      class="btn btn-sm join-item bg-christmas-burgundy text-christmas-cream-light hover:bg-christmas-burgundy-dark transition-colors duration-300 border-0"
                       @click="decrementQuantity(item)"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
+                        stroke-width="2"
                         stroke="currentColor"
                         class="w-4 h-4"
                       >
@@ -56,14 +66,27 @@
                     <input
                       type="number"
                       x-model="item.quantity"
-                      class="join-item w-14 text-center bg-cream-light text-chocolate appearance-none"
+                      class="join-item w-14 text-center bg-christmas-cream-light text-christmas-burgundy-dark font-semibold appearance-none border-y border-christmas-gold/30"
                       readonly
                     />
                     <button
-                      class="btn btn-sm join-item bg-chocolate text-cream-light hover:bg-chocolate-dark"
+                      class="btn btn-sm join-item bg-christmas-green text-christmas-cream-light hover:bg-christmas-green-dark border-0"
                       @click="incrementQuantity(item)"
                     >
-                      +
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-4 h-4"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 4.5v15m7.5-7.5h-15"
+                        />
+                      </svg>
                     </button>
                   </div>
                 </div>
@@ -73,144 +96,200 @@
         </div>
       </template>
 
-      <div
-        class="card bg-cream shadow-xl mb-8 hover:shadow-2xl transition-shadow duration-300"
-      >
-        <div class="card-body p-8">
-          <h2 class="card-title text-2xl mb-4 text-chocolate-dark">
-            Assorted Collections
-          </h2>
-          <template x-for="item in assortedCollections" :key="item.name">
-            <div
-              class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-6 border-b border-chocolate-light/30 last:border-b-0 hover:bg-cream-dark/20 transition-colors duration-300"
-            >
-              <div class="flex-grow mb-2 sm:mb-0">
-                <span
-                  class="font-semibold text-chocolate"
-                  x-text="item.name"
-                ></span>
-                <p
-                  class="text-sm text-chocolate-dark/70"
-                  x-text="item.description"
-                ></p>
-              </div>
-              <div class="flex items-center gap-4">
-                <select
-                  x-model="item.selectedSize"
-                  @change="updateAssortedPrice(item)"
-                  class="select select-bordered bg-cream-light text-chocolate"
-                >
-                  <option value="9">Box of 9</option>
-                  <option value="12">Box of 12</option>
-                  <option value="16">Box of 16</option>
-                  <option value="20">Box of 20</option>
-                </select>
-                <span
-                  class="text-chocolate font-bold"
-                  x-text="'₹' + item.price"
-                ></span>
-                <div class="join">
-                  <button
-                    class="btn btn-sm join-item bg-chocolate text-cream-light hover:bg-chocolate-dark transition-colors duration-300 rounded-l-full"
-                    @click="decrementQuantity(item, item.selectedSize)"
+      <!-- Assorted Collections (hidden when empty) -->
+      <template x-if="assortedCollections.length > 0">
+        <div
+          class="card mb-8 hover:shadow-2xl transition-all duration-300"
+        >
+          <div class="card-body p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="text-christmas-burgundy text-2xl">&#127873;</span>
+              <h2 class="card-title text-2xl text-christmas-burgundy-dark font-serif">
+                Gift Collections
+              </h2>
+              <div class="flex-grow h-px bg-gradient-to-r from-christmas-gold/50 to-transparent"></div>
+            </div>
+            <template x-for="item in assortedCollections" :key="item.name">
+              <div
+                class="flex flex-col sm:flex-row justify-between items-start sm:items-center py-6 border-b border-christmas-gold/20 last:border-b-0 hover:bg-christmas-cream/50 transition-colors duration-300 rounded-lg px-3 -mx-3"
+              >
+                <div class="flex-grow mb-3 sm:mb-0">
+                  <span
+                    class="font-semibold text-christmas-green-dark text-lg font-serif"
+                    x-text="item.name"
+                  ></span>
+                  <p
+                    class="text-sm text-christmas-burgundy/70 mt-1 italic"
+                    x-text="item.description"
+                  ></p>
+                </div>
+                <div class="flex items-center gap-4 flex-wrap justify-end">
+                  <select
+                    x-model="item.selectedSize"
+                    @change="updateAssortedPrice(item)"
+                    class="select select-bordered select-sm bg-christmas-cream-light text-christmas-burgundy-dark border-christmas-gold/40"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-4 h-4"
+                    <option value="9">Box of 9</option>
+                    <option value="12">Box of 12</option>
+                    <option value="16">Box of 16</option>
+                    <option value="20">Box of 20</option>
+                  </select>
+                  <span
+                    class="price-tag text-sm"
+                    x-text="'&#8377;' + item.price"
+                  ></span>
+                  <div class="join shadow-md rounded-full overflow-hidden">
+                    <button
+                      class="btn btn-sm join-item bg-christmas-burgundy text-christmas-cream-light hover:bg-christmas-burgundy-dark transition-colors duration-300 border-0"
+                      @click="decrementQuantity(item, item.selectedSize)"
                     >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M19.5 12h-15"
-                      />
-                    </svg>
-                  </button>
-                  <input
-                    type="number"
-                    x-model="item.quantities[item.selectedSize]"
-                    class="join-item w-14 text-center bg-cream-light text-chocolate appearance-none"
-                    readonly
-                  />
-                  <button
-                    class="btn btn-sm join-item bg-chocolate text-cream-light hover:bg-chocolate-dark"
-                    @click="incrementQuantity(item, item.selectedSize)"
-                  >
-                    +
-                  </button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-4 h-4"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M19.5 12h-15"
+                        />
+                      </svg>
+                    </button>
+                    <input
+                      type="number"
+                      x-model="item.quantities[item.selectedSize]"
+                      class="join-item w-14 text-center bg-christmas-cream-light text-christmas-burgundy-dark font-semibold appearance-none border-y border-christmas-gold/30"
+                      readonly
+                    />
+                    <button
+                      class="btn btn-sm join-item bg-christmas-green text-christmas-cream-light hover:bg-christmas-green-dark border-0"
+                      @click="incrementQuantity(item, item.selectedSize)"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-4 h-4"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 4.5v15m7.5-7.5h-15"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </template>
+            </template>
+          </div>
         </div>
-      </div>
+      </template>
     </div>
 
+    <!-- Order Summary Section -->
     <div class="order-section lg:w-2/5">
-      <div class="card bg-cream shadow-xl sticky top-4 overflow-hidden">
-        <div class="card-body p-8">
-          <h2 class="card-title text-3xl mb-6 text-chocolate-dark font-cursive">
-            Order Summary
+      <div class="card sticky top-4 overflow-visible">
+        <!-- Ribbon bow on top -->
+        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-20">
+          <div class="relative">
+            <div class="w-8 h-8 bg-christmas-burgundy rounded-full shadow-lg flex items-center justify-center">
+              <span class="text-christmas-gold text-lg">&#9733;</span>
+            </div>
+            <div class="absolute top-3 left-1/2 transform -translate-x-1/2 w-1 h-6 bg-christmas-burgundy"></div>
+          </div>
+        </div>
+
+        <div class="card-body p-8 pt-10">
+          <h2 class="card-title text-3xl mb-6 text-christmas-burgundy-dark font-cursive text-center">
+            Your Order
           </h2>
-          <div
-            class="absolute top-0 right-0 w-24 h-24 bg-chocolate-light opacity-20 rounded-full transform translate-x-1/2 -translate-y-1/2"
-          ></div>
-          <div x-show="cartItems.length > 0" class="mt-8">
-            <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
-            <ul class="space-y-2">
+
+          <!-- Decorative divider -->
+          <div class="flex items-center gap-2 mb-6">
+            <div class="flex-grow h-px bg-gradient-to-r from-transparent via-christmas-gold to-transparent"></div>
+            <span class="text-christmas-gold">&#10052;</span>
+            <div class="flex-grow h-px bg-gradient-to-r from-transparent via-christmas-gold to-transparent"></div>
+          </div>
+
+          <div x-show="cartItems.length > 0" class="space-y-4">
+            <ul class="space-y-3">
               <template
                 x-for="item in cartItems"
                 :key="item.name + (item.boxSize || '')"
               >
-                <li class="flex justify-between items-center">
-                  <span class="flex-grow pr-2">
-                    <span x-text="item.name"></span>
+                <li class="flex justify-between items-center py-2 border-b border-christmas-gold/20 last:border-b-0">
+                  <span class="flex-grow pr-2 text-christmas-green-dark">
+                    <span x-text="item.name" class="font-medium"></span>
                     <template x-if="item.boxSize">
                       <span
-                        class="text-sm text-chocolate-dark/70"
+                        class="text-sm text-christmas-burgundy/70 italic"
                         x-text="` (Box of ${item.boxSize})`"
                       ></span>
                     </template>
                   </span>
                   <span class="flex-shrink-0 text-right whitespace-nowrap">
                     <span
-                      class="text-sm text-chocolate-dark/70"
+                      class="text-sm text-christmas-burgundy/70"
                       x-text="` x${item.quantity}`"
                     ></span>
                     <span
-                      class="ml-2"
-                      x-text="`₹${item.price * item.quantity}`"
+                      class="ml-2 font-semibold text-christmas-burgundy"
+                      x-text="`&#8377;${item.price * item.quantity}`"
                     ></span>
                   </span>
                 </li>
               </template>
             </ul>
-            <div
-              class="border-t border-dotted border-chocolate-dark/30 my-4"
-            ></div>
-            <p class="font-bold text-right">
-              Total: ₹<span x-text="cartTotal"></span>
-            </p>
+
+            <!-- Total with festive styling -->
+            <div class="bg-christmas-green/10 rounded-lg p-4 mt-4">
+              <p class="font-bold text-right text-xl text-christmas-green-dark">
+                Total: <span class="text-christmas-burgundy">&#8377;<span x-text="cartTotal"></span></span>
+              </p>
+            </div>
           </div>
-          <form id="orderForm" class="mt-4">
-            <input
-              type="text"
-              x-model="customerName"
-              placeholder="Your Name"
-              required
-              class="input input-bordered w-full mb-2 bg-cream-light text-chocolate placeholder-chocolate-light/70"
-            />
+
+          <!-- Empty cart message -->
+          <div x-show="cartItems.length === 0" class="text-center py-8 text-christmas-burgundy/60">
+            <span class="text-4xl block mb-3">&#127876;</span>
+            <p class="italic">Your cart is empty</p>
+            <p class="text-sm mt-1">Add some festive plum cakes!</p>
+          </div>
+
+          <!-- Order Form -->
+          <form id="orderForm" class="mt-6 space-y-4">
+            <div class="relative">
+              <input
+                type="text"
+                x-model="customerName"
+                placeholder="Your Name"
+                required
+                class="input input-bordered w-full bg-christmas-cream-light text-christmas-burgundy-dark placeholder-christmas-burgundy/40 border-christmas-gold/40 focus:border-christmas-gold"
+              />
+              <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-christmas-gold/50">&#9733;</span>
+            </div>
+
             <button
               type="button"
-              class="btn w-full bg-chocolate text-cream-light hover:bg-chocolate-dark"
+              class="btn w-full bg-gradient-to-r from-christmas-green to-christmas-green-dark text-christmas-cream-light hover:from-christmas-green-dark hover:to-christmas-green border-0 shadow-lg transform hover:scale-[1.02] transition-all duration-300 gift-button"
               @click="sendWhatsAppOrder"
             >
+              <span class="mr-2">&#127873;</span>
               Place Order via WhatsApp
+              <span class="ml-2">&#127873;</span>
             </button>
           </form>
+
+          <!-- Trust badge -->
+          <p class="text-center text-xs text-christmas-burgundy/60 mt-4 italic">
+            &#10052; Made with love this holiday season &#10052;
+          </p>
         </div>
       </div>
     </div>

@@ -6,19 +6,19 @@
   <body
     x-data="menu()"
     x-init="fetchMenuData"
-    class="bg-cream-light min-h-screen"
+    class="bg-christmas-cream-light min-h-screen"
   >
     {{ partial "header.html" . }} {{ block "main" . }}{{ end }} {{ partial
     "footer.html" . }}
 
     <dialog id="errorModal" class="modal">
-      <div class="modal-box">
-        <h3 class="font-bold text-lg text-chocolate-dark">Oops!</h3>
-        <p id="modalMessage" class="py-4 text-chocolate"></p>
+      <div class="modal-box bg-christmas-cream-light border border-christmas-gold/30">
+        <h3 class="font-bold text-lg text-christmas-burgundy-dark font-serif">Oops!</h3>
+        <p id="modalMessage" class="py-4 text-christmas-green-dark"></p>
         <div class="modal-action">
           <form method="dialog">
             <button
-              class="btn bg-chocolate text-cream-light hover:bg-chocolate-dark"
+              class="btn bg-christmas-burgundy text-christmas-cream-light hover:bg-christmas-burgundy-dark border-0"
             >
               Close
             </button>
@@ -121,7 +121,7 @@
               return;
             }
 
-            let message = `Hello! This is ${this.customerName}. I'd like to place an order from chocolates.ovenlydelights.shop:\n\n`;
+            let message = `Hello! This is ${this.customerName}. I'd like to place a Christmas Plum Cake order:\n\n`;
             this.cartItems.forEach(item => {
               if (item.boxSize) {
                 message += `${item.name} (Box of ${item.boxSize}) x ${item.quantity} = ₹${item.price * item.quantity}\n`;

@@ -1,11 +1,67 @@
-<footer class="bg-chocolate-dark text-cream-light py-8">
-    <div class="container mx-auto text-center">
-        <p>All our chocolates are made with the finest ingredients and crafted with care.</p>
-        <p class="mt-2">Please inquire about our seasonal specials and custom orders.</p>
-        <p class="mt-2">
-            Email: <a href="mailto:ovenly.delightss@gmail.com" class="underline">ovenly.delightss@gmail.com</a> | 
-            Phone: <a href="tel:+918700022184" class="underline">+91 87000 22184</a>
-        </p>
-        <p class="mt-4"><a href="{{ "privacy-policy" | relURL }}" class="underline">Privacy Policy</a></p>
+<footer class="bg-gradient-to-br from-christmas-burgundy-dark via-christmas-burgundy to-christmas-burgundy-dark text-christmas-cream-light py-12 relative overflow-hidden">
+  <!-- Decorative top border -->
+  <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-christmas-gold via-christmas-green via-christmas-gold to-christmas-green"></div>
+
+  <!-- Pine garland decoration -->
+  <div class="absolute top-0 left-0 right-0 flex justify-center">
+    <div class="flex gap-6 transform -translate-y-1/2">
+      <span class="w-4 h-4 rounded-full bg-christmas-gold shadow-lg animate-pulse"></span>
+      <span class="w-3 h-3 rounded-full bg-christmas-green shadow-lg animate-pulse" style="animation-delay: 0.3s"></span>
+      <span class="w-4 h-4 rounded-full bg-christmas-gold shadow-lg animate-pulse" style="animation-delay: 0.6s"></span>
+      <span class="w-3 h-3 rounded-full bg-christmas-green shadow-lg animate-pulse" style="animation-delay: 0.9s"></span>
+      <span class="w-4 h-4 rounded-full bg-christmas-gold shadow-lg animate-pulse" style="animation-delay: 1.2s"></span>
     </div>
+  </div>
+
+  <div class="container mx-auto text-center px-4 relative z-10">
+    <!-- Festive greeting -->
+    <div class="mb-6">
+      <span class="text-christmas-gold text-3xl">&#10052;</span>
+      <span class="text-2xl font-cursive mx-4">Merry Christmas & Happy Holidays!</span>
+      <span class="text-christmas-gold text-3xl">&#10052;</span>
+    </div>
+
+    <p class="text-christmas-cream/90 mb-2">
+      All our plum cakes are made with the finest ingredients and crafted with love.
+    </p>
+    <p class="text-christmas-cream/80 text-sm">
+      Order early for Christmas delivery! Custom gift wrapping available.
+    </p>
+
+    <!-- Contact info with festive styling -->
+    <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
+      <a href="mailto:ovenly.delightss@gmail.com" class="flex items-center gap-2 text-christmas-cream-light hover:text-christmas-gold transition-colors">
+        <span>&#9993;</span>
+        <span class="underline underline-offset-4">ovenly.delightss@gmail.com</span>
+      </a>
+      <span class="hidden sm:block text-christmas-gold">&#10022;</span>
+      <a href="tel:+918700022184" class="flex items-center gap-2 text-christmas-cream-light hover:text-christmas-gold transition-colors">
+        <span>&#9742;</span>
+        <span class="underline underline-offset-4">+91 87000 22184</span>
+      </a>
+    </div>
+
+    <!-- Decorative divider -->
+    <div class="flex items-center justify-center gap-3 my-6">
+      <div class="w-16 h-px bg-christmas-gold/40"></div>
+      <span class="text-christmas-gold">&#127876;</span>
+      <div class="w-16 h-px bg-christmas-gold/40"></div>
+    </div>
+
+    <p class="text-sm text-christmas-cream/60">
+      <a href="{{ "privacy-policy" | relURL }}" class="hover:text-christmas-gold transition-colors underline underline-offset-4">Privacy Policy</a>
+    </p>
+
+    <p class="text-xs text-christmas-cream/40 mt-4">
+      &#169; 2024 Ovenly Delights by Saumya. Spreading joy one plum cake at a time.
+    </p>
+  </div>
+
+  <!-- Corner holly decorations -->
+  <div class="absolute bottom-4 left-4 opacity-20">
+    <span class="text-4xl">&#127807;</span>
+  </div>
+  <div class="absolute bottom-4 right-4 opacity-20">
+    <span class="text-4xl">&#127807;</span>
+  </div>
 </footer>
