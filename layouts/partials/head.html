@@ -6,7 +6,7 @@
 <meta name="description" content="{{ .Site.Params.description }}" />
 <meta
   name="keywords"
-  content="homemade chocolates, artisanal chocolates, handcrafted chocolates, Indian chocolates, Ovenly Delights, Saumya chocolates"
+  content="christmas plum cake, plum cake, fruit cake, christmas cake, rum cake, homemade plum cake, plum cake bangalore, christmas cake bangalore, order plum cake bangalore, Ovenly Delights"
 />
 <meta name="author" content="Saumya" />
 <meta name="language" content="English" />
@@ -16,14 +16,16 @@
 <meta property="og:url" content="{{ .Permalink }}" />
 <meta property="og:title" content="{{ .Title }}" />
 <meta property="og:description" content="{{ .Site.Params.description }}" />
-<!-- <meta property="og:image" content="{{ .Site.BaseURL }}assets/og-image.jpg"> -->
+<meta property="og:image" content="{{ .Site.BaseURL }}assets/plum-cake-1.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="1200" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content="{{ .Permalink }}" />
 <meta property="twitter:title" content="{{ .Title }}" />
 <meta property="twitter:description" content="{{ .Site.Params.description }}" />
-<!-- <meta property="twitter:image" content="{{ .Site.BaseURL }}assets/twitter-image.jpg"> -->
+<meta property="twitter:image" content="{{ .Site.BaseURL }}assets/plum-cake-1.jpg" />
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="/assets/chef-hat.svg" />
@@ -32,6 +34,7 @@
 <!-- Canonical URL -->
 <link rel="canonical" href="{{ .Permalink }}" />
 
+<script defer src="https://um.mrkaran.dev/script.js" data-website-id="4206ea28-a173-4285-9cf2-bbc29b87ace2"></script>
 <script src="//unpkg.com/alpinejs" defer></script>
 <link
   href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
@@ -88,18 +91,20 @@
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Ovenly Delights by Saumya",
+    "@type": "Product",
+    "name": "Rich Fruit & Nut Christmas Plum Cake",
     "description": "{{ .Site.Params.description }}",
-    "image": "{{ .Site.BaseURL }}assets/chef-hat.svg",
-    "url": "{{ .Site.BaseURL }}",
-    "telephone": "+918700022184",
-    "address": {
-      "@type": "Niti Khand 2",
-      "addressLocality": "Indirapuram",
-      "addressRegion": "Uttar Pradesh",
-      "addressCountry": "India"
+    "image": "{{ .Site.BaseURL }}assets/plum-cake-1.jpg",
+    "brand": {
+      "@type": "Brand",
+      "name": "Ovenly Delights"
     },
-    "priceRange": "₹₹"
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "500",
+      "highPrice": "1600",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock"
+    }
   }
 </script>

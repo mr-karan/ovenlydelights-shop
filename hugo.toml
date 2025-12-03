@@ -1,10 +1,11 @@
 baseURL = 'https://chocolates.ovenlydelights.shop/'
 languageCode = 'en-us'
-title = "Ovenly Delights by Saumya - Handcrafted Homemade Chocolates"
+title = "Christmas Plum Cake - Ovenly Delights"
 
 [params]
-  description = "Indulge in exquisite handcrafted chocolates from Ovenly Delights by Saumya. Discover our range of artisanal dark, milk, and white chocolates made with love in India."
+  description = "Order our signature Rich Fruit & Nut Christmas Plum Cake. Rum-soaked dried fruits, premium nuts, and aromatic spices. Small-batch, made to order."
   author = "Saumya"
-  keywords = ["handcrafted chocolates", "homemade chocolates", "artisanal chocolates", "dark chocolate", "milk chocolate", "white chocolate"]
+  keywords = ["christmas plum cake", "plum cake", "fruit cake", "christmas cake", "rum cake", "homemade plum cake", "plum cake bangalore", "christmas cake bangalore", "order plum cake bangalore"]
+  ogImage = "/assets/plum-cake-1.jpg"
 
 disableKinds = ["taxonomy", "term"]
