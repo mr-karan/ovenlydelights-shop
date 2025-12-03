@@ -79,9 +79,6 @@
               message += `• ${item.label} (${item.size}) x ${item.quantity} - Rs.${item.price * item.quantity}\n`;
             });
             message += `\n*Total: Rs.${this.cartTotal}*`;
-            if (this.cartTotal >= 1000) {
-              message += ` (Free Delivery)`;
-            }
             message += `\n\nKindly confirm availability and share payment details. Thank you!`;
 
             const encodedMessage = encodeURIComponent(message);

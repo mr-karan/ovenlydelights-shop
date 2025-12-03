@@ -356,11 +356,11 @@
               <span class="text-christmas-green-dark">Subtotal (<span x-text="cartItems.reduce((sum, item) => sum + item.quantity, 0)"></span> items):</span>
               <span class="text-xl font-bold text-christmas-burgundy-dark">&#8377;<span x-text="cartTotal"></span></span>
             </div>
-            <p x-show="cartTotal >= 1000" class="text-right text-xs text-christmas-green mt-1 flex items-center justify-end gap-1">
+            <p x-show="cartTotal >= 2000" class="text-right text-xs text-christmas-green mt-1 flex items-center justify-end gap-1">
               <span>&#10003;</span> Your order qualifies for FREE Delivery!
             </p>
-            <p x-show="cartTotal < 1000 && cartTotal > 0" class="text-right text-xs text-christmas-burgundy/60 mt-1">
-              Add &#8377;<span x-text="1000 - cartTotal"></span> more for FREE Delivery
+            <p x-show="cartTotal < 2000 && cartTotal > 0" class="text-right text-xs text-christmas-burgundy/60 mt-1">
+              Add &#8377;<span x-text="2000 - cartTotal"></span> more for FREE Delivery
             </p>
           </div>
 
