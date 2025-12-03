@@ -1,65 +1,30 @@
 {
-    "bars": {
-        "Classic Plum Cakes": {
-            "priority": 1,
-            "items": [
-                {
-                    "name": "Traditional Plum Cake",
-                    "description": "Our signature Christmas plum cake with rum-soaked dried fruits, rich spices, and a moist crumb",
-                    "price": 450.0
-                },
-                {
-                    "name": "Eggless Plum Cake",
-                    "description": "All the festive flavors without eggs - perfect for vegetarian celebrations",
-                    "price": 400.0
-                },
-                {
-                    "name": "Rich Fruit & Nut Plum Cake",
-                    "description": "Extra loaded with candied fruits, raisins, and premium nuts for the ultimate indulgence",
-                    "price": 550.0
-                }
-            ]
-        },
-        "Premium Plum Cakes": {
-            "priority": 2,
-            "items": [
-                {
-                    "name": "Brandy Soaked Deluxe",
-                    "description": "Luxurious plum cake aged with fine brandy, studded with cherries and almonds",
-                    "price": 650.0
-                },
-                {
-                    "name": "Dark Chocolate Plum Cake",
-                    "description": "Rich dark chocolate meets traditional plum cake - a decadent twist on the classic",
-                    "price": 600.0
-                },
-                {
-                    "name": "Almond Marzipan Topped",
-                    "description": "Classic plum cake crowned with a layer of homemade almond marzipan",
-                    "price": 700.0
-                }
-            ]
-        },
-        "Mini & Gift Packs": {
-            "priority": 3,
-            "items": [
-                {
-                    "name": "Mini Plum Cake (Pack of 4)",
-                    "description": "Adorable individual-sized plum cakes, perfect for gifting or personal treats",
-                    "price": 350.0
-                },
-                {
-                    "name": "Plum Cake Slices Box (6 pcs)",
-                    "description": "Pre-sliced portions in an elegant gift box - great for sharing",
-                    "price": 400.0
-                },
-                {
-                    "name": "Christmas Gift Hamper",
-                    "description": "A traditional plum cake paired with festive cookies and a handwritten greeting card",
-                    "price": 850.0
-                }
-            ]
-        }
+    "product": {
+        "name": "Rich Fruit & Nut Plum Cake",
+        "tagline": "Loaded with Premium Ingredients",
+        "description": "Our signature Christmas plum cake bursting with rum-soaked dried fruits, crunchy almonds, cashews, and walnuts, aromatic spices, and a perfectly moist crumb. A festive tradition crafted with love.",
+        "note": "Contains egg",
+        "variants": [
+            {
+                "size": "300g",
+                "label": "Mini Cake",
+                "description": "Perfect for individual indulgence or gifting",
+                "price": 500
+            },
+            {
+                "size": "600g",
+                "label": "Classic",
+                "description": "Ideal for small gatherings of 4-6",
+                "price": 900
+            },
+            {
+                "size": "1.2kg",
+                "label": "Family Size",
+                "description": "Perfect for celebrations with 8-12 servings",
+                "price": 1600
+            }
+        ]
     },
+    "bars": {},
     "assortedCollections": []
 }

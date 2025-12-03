@@ -30,81 +30,33 @@
     <script>
       function menu() {
         return {
-          items: { bars: {} },
-          assortedCollections: [],
+          product: null,
+          selectedVariant: 1, // Default to 500g (index 1)
+          quantities: [0, 0, 0], // Quantities for each variant
           customerName: "",
+
           fetchMenuData() {
-            this.items = {{ .Site.Data.chocolates | jsonify | safeJS }};
-            this.categoryOrder = Object.entries(this.items.bars)
-                .sort((a, b) => a[1].priority - b[1].priority)
-                .map(([category, _]) => category);
-            Object.values(this.items.bars).forEach(category => {
-                category.items.forEach(item => item.quantity = 0);
-            });
-            this.assortedCollections = this.items.assortedCollections.map(item => ({
-              ...item,
-              quantities: {
-                "9": 0,
-                "12": 0,
-                "16": 0,
-                "20": 0
-              },
-              selectedSize: "9",
-              price: item.prices["9"]
-            }));
+            const data = {{ .Site.Data.chocolates | jsonify | safeJS }};
+            this.product = data.product;
           },
-          incrementQuantity(item, size) {
-            if (size) {
-              item.quantities[size]++;
-              this.updateAssortedPrice(item);
-            } else {
-              item.quantity++;
-            }
-            this.$nextTick(() => this.updateComponent());
-          },
-          decrementQuantity(item, size) {
-            if (size) {
-              if (item.quantities[size] > 0) {
-                item.quantities[size]--;
-                this.updateAssortedPrice(item);
-              }
-            } else {
-              if (item.quantity > 0) item.quantity--;
-            }
-            this.$nextTick(() => this.updateComponent());
-          },
-          updateAssortedPrice(item) {
-            item.price = item.prices[item.selectedSize];
-            this.$nextTick(() => {
-              // Force Alpine to recognize the change
-              this.assortedCollections = [...this.assortedCollections];
-            });
-          },
-          updateComponent() {
-            this.assortedCollections = [...this.assortedCollections];
-          },
+
           get cartItems() {
-            let barItems = Object.values(this.items.bars).flatMap(category =>
-              category.items.filter(item => item.quantity > 0)
-            );
-            let assortedItems = this.assortedCollections.flatMap(item =>
-              Object.entries(item.quantities)
-                .filter(([size, quantity]) => quantity > 0)
-                .map(([size, quantity]) => ({
-                  name: item.name,
-                  boxSize: size,
-                  quantity: quantity,
-                  price: item.prices[size]
-                }))
-            );
-            return [...barItems, ...assortedItems];
+            if (!this.product) return [];
+            return this.product.variants
+              .map((variant, index) => ({
+                ...variant,
+                quantity: this.quantities[index]
+              }))
+              .filter(item => item.quantity > 0);
           },
+
           get cartTotal() {
             return this.cartItems.reduce(
               (total, item) => total + item.price * item.quantity,
               0
             );
           },
+
           sendWhatsAppOrder() {
             const showModal = (message) => {
               document.getElementById("modalMessage").textContent = message;
@@ -117,20 +69,20 @@
             }
 
             if (this.cartItems.length === 0) {
-              showModal('Your cart is empty. Please add some items before placing an order.');
+              showModal('Your cart is empty. Please select a quantity before placing an order.');
               return;
             }
 
-            let message = `Hello! This is ${this.customerName}. I'd like to place a Christmas Plum Cake order:\n\n`;
+            let message = `Hi!\n\nI'm ${this.customerName}, and I'd love to order your Christmas Plum Cake.\n\n`;
+            message += `*Order Details:*\n`;
             this.cartItems.forEach(item => {
-              if (item.boxSize) {
-                message += `${item.name} (Box of ${item.boxSize}) x ${item.quantity} = ₹${item.price * item.quantity}\n`;
-              } else {
-                message += `${item.name} x ${item.quantity} = ₹${item.price * item.quantity}\n`;
-              }
+              message += `• ${item.label} (${item.size}) x ${item.quantity} - Rs.${item.price * item.quantity}\n`;
             });
-            message += `\n*Total: ₹${this.cartTotal}*`;
-            message += `\n\nPlease confirm availability and provide payment details. Thank you!`;
+            message += `\n*Total: Rs.${this.cartTotal}*`;
+            if (this.cartTotal >= 1000) {
+              message += ` (Free Delivery)`;
+            }
+            message += `\n\nKindly confirm availability and share payment details. Thank you!`;
 
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/918700022184?text=${encodedMessage}`, '_blank');
