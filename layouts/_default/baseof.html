@@ -31,10 +31,9 @@
       function menu() {
         return {
           product: null,
-          selectedVariant: 1, // Default to 500g (index 1)
-          quantities: [0, 0, 0], // Quantities for each variant
-          isEggless: false, // Eggless variant toggle
-          egglessSurcharge: 50, // Extra charge for eggless
+          // Quantities: [regular, eggless] for each size variant
+          quantities: [[0, 0], [0, 0], [0, 0]],
+          egglessSurcharge: 50,
           customerName: "",
 
           fetchMenuData() {
@@ -42,19 +41,42 @@
             this.product = data.product;
           },
 
-          getItemPrice(variant) {
-            return variant.price + (this.isEggless ? this.egglessSurcharge : 0);
+          getRegularQty(index) {
+            return this.quantities[index][0];
+          },
+
+          getEgglessQty(index) {
+            return this.quantities[index][1];
+          },
+
+          getTotalQty(index) {
+            return this.quantities[index][0] + this.quantities[index][1];
           },
 
           get cartItems() {
             if (!this.product) return [];
-            return this.product.variants
-              .map((variant, index) => ({
-                ...variant,
-                price: this.getItemPrice(variant),
-                quantity: this.quantities[index]
-              }))
-              .filter(item => item.quantity > 0);
+            let items = [];
+            this.product.variants.forEach((variant, index) => {
+              // Regular
+              if (this.quantities[index][0] > 0) {
+                items.push({
+                  ...variant,
+                  type: 'Regular',
+                  price: variant.price,
+                  quantity: this.quantities[index][0]
+                });
+              }
+              // Eggless
+              if (this.quantities[index][1] > 0) {
+                items.push({
+                  ...variant,
+                  type: 'Eggless',
+                  price: variant.price + this.egglessSurcharge,
+                  quantity: this.quantities[index][1]
+                });
+              }
+            });
+            return items;
           },
 
           get cartTotal() {
@@ -80,12 +102,10 @@
               return;
             }
 
-            const variant = this.isEggless ? 'Eggless' : 'Regular';
             let message = `Hi!\n\nI'm ${this.customerName}, and I'd love to order your Christmas Plum Cake.\n\n`;
-            message += `*Variant: ${variant}*\n\n`;
             message += `*Order Details:*\n`;
             this.cartItems.forEach(item => {
-              message += `• ${item.label} (${item.size}) x ${item.quantity} - Rs.${item.price * item.quantity}\n`;
+              message += `• ${item.label} (${item.size}) - ${item.type} x ${item.quantity} - Rs.${item.price * item.quantity}\n`;
             });
             message += `\n*Total: Rs.${this.cartTotal}*`;
             message += `\n\nKindly confirm availability and share payment details. Thank you!`;
