@@ -1,3 +1,3 @@
 ---
-title: "Ovenly Delights by Saumya - Handcrafted Homemade Chocolates"
+title: "Christmas Plum Cake - Ovenly Delights by Chef Saumya"
 ---

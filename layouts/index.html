@@ -122,11 +122,26 @@
           <div class="max-w-2xl mx-auto text-center mb-10">
             <p class="text-christmas-green-dark text-lg leading-relaxed" x-text="product.description">
             </p>
-            <p class="mt-3 text-sm text-christmas-burgundy/70 italic flex items-center justify-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-christmas-burgundy/50"></span>
-              <span x-text="product.note"></span>
-              <span class="w-2 h-2 rounded-full bg-christmas-burgundy/50"></span>
-            </p>
+          </div>
+
+          <!-- Egg/Eggless Toggle -->
+          <div class="flex justify-center mb-8">
+            <div class="inline-flex items-center bg-christmas-cream rounded-full p-1 shadow-inner border border-christmas-gold/30">
+              <button
+                @click="isEggless = false"
+                class="px-5 py-2 rounded-full text-sm font-medium transition-all duration-300"
+                :class="!isEggless ? 'bg-christmas-burgundy text-christmas-cream-light shadow-md' : 'text-christmas-burgundy/70 hover:text-christmas-burgundy'"
+              >
+                Regular
+              </button>
+              <button
+                @click="isEggless = true"
+                class="px-5 py-2 rounded-full text-sm font-medium transition-all duration-300"
+                :class="isEggless ? 'bg-christmas-green text-christmas-cream-light shadow-md' : 'text-christmas-burgundy/70 hover:text-christmas-burgundy'"
+              >
+                Eggless <span class="text-xs opacity-75">+&#8377;50</span>
+              </button>
+            </div>
           </div>
 
           <!-- Size Selection Cards with Quantity -->
@@ -169,7 +184,7 @@
                     <!-- Price & Quantity Controls -->
                     <div class="flex items-center justify-between mt-auto pt-3 border-t border-christmas-gold/20">
                       <span class="text-xl font-bold font-serif text-christmas-burgundy">
-                        &#8377;<span x-text="variant.price"></span>
+                        &#8377;<span x-text="getItemPrice(variant)"></span>
                       </span>
 
                       <!-- Quantity Stepper -->
@@ -309,7 +324,7 @@
                       <div>
                         <h4 class="font-medium text-christmas-green-dark" x-text="product.name"></h4>
                         <p class="text-sm text-christmas-burgundy/60 mt-0.5">
-                          <span x-text="item.label"></span> &middot; <span x-text="item.size"></span>
+                          <span x-text="item.label"></span> &middot; <span x-text="item.size"></span> &middot; <span x-text="isEggless ? 'Eggless' : 'Regular'"></span>
                         </p>
                         <p class="text-xs text-christmas-green mt-1">&#10003; In Stock</p>
                       </div>
