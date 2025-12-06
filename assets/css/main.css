@@ -12,8 +12,9 @@ input[type="number"] {
 }
 
 :root {
-  --christmas-burgundy: #7B1E3A;
-  --christmas-burgundy-dark: #5A1429;
+  --christmas-burgundy: #6B0F2A;
+  --christmas-burgundy-dark: #4A0A1D;
+  --christmas-burgundy-light: #8B1E40;
   --christmas-green: #1D5E3E;
   --christmas-green-dark: #0F3D28;
   --christmas-gold: #D4AF37;
