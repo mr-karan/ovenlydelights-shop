@@ -49,9 +49,9 @@
         colors: {
           christmas: {
             burgundy: {
-              light: '#9B2E50',
-              DEFAULT: '#7B1E3A',
-              dark: '#5A1429',
+              light: '#8B1E40',
+              DEFAULT: '#6B0F2A',
+              dark: '#4A0A1D',
             },
             green: {
               light: '#2D7A52',
@@ -86,7 +86,7 @@
   };
 </script>
 {{ $style := resources.Get "css/main.css" | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $style.Permalink }}" />
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" />
 
 <script type="application/ld+json">
   {
