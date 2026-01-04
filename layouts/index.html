@@ -379,10 +379,13 @@
               <span class="text-xl font-bold text-christmas-burgundy-dark">&#8377;<span x-text="cartTotal"></span></span>
             </div>
             <p x-show="cartTotal >= 2000" class="text-right text-xs text-christmas-green mt-1 flex items-center justify-end gap-1">
-              <span>&#10003;</span> Your order qualifies for FREE Delivery!
+              <span>&#10003;</span> Your order qualifies for FREE Delivery!*
             </p>
             <p x-show="cartTotal < 2000 && cartTotal > 0" class="text-right text-xs text-christmas-burgundy/60 mt-1">
-              Add &#8377;<span x-text="2000 - cartTotal"></span> more for FREE Delivery
+              Add &#8377;<span x-text="2000 - cartTotal"></span> more for FREE Delivery*
+            </p>
+            <p class="text-right text-xs text-christmas-burgundy/50 mt-1 italic">
+              *Free shipping only for Bangalore
             </p>
           </div>
 
